@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   maplen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akeldiya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:53:40 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/03/02 14:53:42 by akeldiya         ###   ########.fr       */
+/*   Created: 2024/06/14 21:05:55 by akeldiya          #+#    #+#             */
+/*   Updated: 2024/06/14 21:24:34 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <ctype.h>
+#include "../so_long.h"
 
-int	ft_tolower(int c)
+int	mapwidth(t_map *map)
 {
-	if (c > 64 && c < 91)
-	{
-		return (c + 32);
-	}
-	return (c);
+	return (ft_strlen(map->mtxt));
 }
-/*
-int	main()
+
+int	mapheight(t_map *map)
 {
-	printf("%c\n", ft_tolower('A'));
-	printf("%c", tolower('A'));
-}*/
+	int	i;
+
+	i = 1;
+	while (map->nxt != NULL)
+	{
+		map = map->nxt;
+		i++;
+	}
+	return (i);
+}

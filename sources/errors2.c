@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akeldiya <akeldiya@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:00:30 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/05/17 17:42:34 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:12:11 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ void	map_error_collectives(t_map **map)
 {
 	error_main(map, 0);
 	ft_printf("There should be one P, one E and C's a map!\n");
+	exit(1);
+}
+
+void	map_notrectangle(t_map **nodes)
+{
+	error_main(nodes, 0);
+	ft_printf("The shape of the map must be rectangular!\n");
 	exit(1);
 }
 

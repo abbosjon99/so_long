@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akeldiya <akeldiya@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:24:07 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/05/17 17:55:00 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/14 21:13:33 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_map
 {
-	int				id;
 	char			*mtxt;
 	char			*tmp;
 	struct s_map	*prev;
@@ -33,18 +34,26 @@ typedef struct s_map
 
 typedef struct s_data
 {
+	int				x;
+	int				y;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*textures[5];
-	struct s_map	*map;
+	t_map			*map;
 }					t_data;
 
 t_map				*map_opener(int fd, t_map *map);
 t_map				*get_last_node(t_map *head);
 
+int					mapwidth(t_map *map);
+int					mapheight(t_map *map);
+
+char				*map_name_check(char *name);
+
 void				map_checker(t_map *head);
-void				free_data(t_data **data);
-void				free_maps(t_map **nodes);
+void				free_data(t_data *data);
+void				free_nodes(t_map **nodes);
+void				error_param(void);
 void				error_main(t_map **nodes, bool needtoexit);
 void				map_error_open(void);
 void				map_notrectangle(t_map **nodes);
