@@ -6,22 +6,75 @@
 /*   By: akeldiya <akeldiya@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:32:47 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/05/15 12:49:10 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:29:36 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+// #include "./mlx-linux/mlx.h"
+// #include "so_long.h"
 
-int	main(void)
+// int	main(void)
+// {
+// 	int		fd;
+// 	t_data	*data;
+
+// 	data = malloc(sizeof(t_data));
+// 	if (!data)
+// 		error_main(NULL, 1);
+// 	fd = open("map.ber", O_RDONLY);
+// 	data->map = map_opener(fd, data->map);
+// 	close(fd);
+// 	map_checker(data->map);
+// 	free_data(&data);
+// 	return (0);
+// }
+
+#include "mlx-linux/mlx.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
+ 
+typedef struct s_data
 {
-	int		fd;
-	t_map	*map;
-
-	map = NULL;
-	fd = open("map.ber", O_RDONLY);
-	map = map_opener(fd, map);
-	close(fd);
-	map_checker(map);
-	free_nodes(&map);
+	void *mlx_ptr;
+	void *win_ptr;
+} t_data;
+ 
+int on_destroy(t_data *data)
+{
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	exit(0);
+	return (0);
+}
+ 
+int on_keypress(int keysym, t_data *data)
+{
+	(void)data;
+	printf("Pressed key: %d\\n", keysym);
+	return (0);
+}
+ 
+int main(void)
+{
+	t_data data;
+ 
+	data.mlx_ptr = mlx_init();
+	if (!data.mlx_ptr)
+		return (1);
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "hi :)");
+	if (!data.win_ptr)
+		return (free(data.mlx_ptr), 1);
+ 
+	// Register key release hook
+	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+ 
+	// Register destroy hook
+	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
+ 
+	// Loop over the MLX pointer
+	mlx_loop(data.mlx_ptr);
 	return (0);
 }

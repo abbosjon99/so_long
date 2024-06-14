@@ -6,7 +6,7 @@
 #    By: akeldiya <akeldiya@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/28 19:56:58 by akeldiya          #+#    #+#              #
-#    Updated: 2024/05/14 11:37:01 by akeldiya         ###   ########.fr        #
+#    Updated: 2024/06/13 20:22:22 by akeldiya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,33 +23,34 @@ NAME	= so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g #-Wall -Wextra -Werror
 
 RM = rm -f
 
 INCLULIBFT = -Ilibft
-INCLUDEMLX = -Iminilibx-linux
+LIBFTFLAGS = $(INCLULIBFT) -Llibft -lft
+INCLUDEMLX = -I/usr/include -Imlx-linux
+MLXFLAGS = $(INCLUDEMLX) -Lmlx-linux -lmlx -lX11 -lXext -L/usr/lib/X11
 
 # Rules
 
 all: $(NAME)
 
 %.o:	%.c
-		${CC} ${CFLAGS} $(INCLULIBFT) $(INCLUDEMLX) -c $< -o $@
+		${CC} ${CFLAGS} -c -o $@ $< $(INCLULIBFT) $(INCLUDEMLX)
 
 $(NAME): $(OBJS) libft mlx
-	$(CC) $(CFLAGS) $(INCLULIBFT) $(INCLUDEMLX) -o $(NAME) $(OBJS) -Llibft -lft -Lminilibx
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFTFLAGS) $(MLXFLAGS)
 
 libft:
 	make -C libft
 
 mlx:
-	make -C minilibx-linux
+	make -C mlx-linux
 
 clean:
 	make clean -C libft
-	make -C minilibx-linux
-	cd minilibx-linux && make clean
+	make clean -C mlx-linux
 	${RM} ${OBJS}
 
 fclean:		clean

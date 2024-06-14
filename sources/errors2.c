@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:00:30 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/05/15 12:18:55 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:42:34 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,12 @@ void	map_error_collectives(t_map **map)
 {
 	error_main(map, 0);
 	ft_printf("There should be one P, one E and C's a map!\n");
+	exit(1);
+}
+
+void	map_notsurrounded(t_map **nodes)
+{
+	error_main(nodes, 0);
+	ft_printf("The map must be surrounded by walls!\n");
 	exit(1);
 }
