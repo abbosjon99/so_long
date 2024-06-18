@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:00:30 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 19:01:34 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:34:25 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,10 @@ char	*map_name_check(char *name)
 		ft_printf("Map should be a file with *.ber extension!\n");
 		exit(1);
 	}
+}
+
+void	finish(t_data *data)
+{
+	ft_printf("CONGRATS!!! YOU WON! :))))\n");
+	free_data(data);
 }

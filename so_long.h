@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:24:07 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 20:04:54 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:32:23 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_data
 {
 	int				x;
 	int				y;
+	int				c;
 	int				posx;
 	int				posy;
 	void			*ptry;
@@ -52,7 +53,6 @@ t_map				*get_last_node(t_map *head);
 
 int					mapwidth(t_map *map);
 int					mapheight(t_map *map);
-int					on_keypress(int keysym, t_data *data);
 
 char				*map_name_check(char *name);
 
@@ -69,7 +69,9 @@ void				map_notreachable(t_map **nodes);
 void				map_error_wrong_char(t_map **map);
 void				map_error_collectives(t_map **map);
 void				points2p(t_map *head, t_map *temp, int i, bool isitrun);
+void				finish(t_data *data);
 
 void				ft_draw(t_data *data);
+void				on_keypress(int keysym, t_data *data);
 
 #endif

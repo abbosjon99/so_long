@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:28:59 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 20:15:00 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:22:53 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static int	put_img(int x, int y, char sym, t_data *data)
 	else if (sym == 'P')
 		i = 2;
 	else if (sym == 'C')
+	{
 		i = 3;
+		data->c++;
+	}
 	else if (sym == 'E')
 		i = 4;
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[i], x
@@ -39,6 +42,7 @@ void	ft_draw(t_data *data)
 	int		y;
 
 	y = 0;
+	data->c = 0;
 	mapy = data->map;
 	while (y < data->y)
 	{
