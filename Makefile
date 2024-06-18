@@ -6,7 +6,7 @@
 #    By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/28 19:56:58 by akeldiya          #+#    #+#              #
-#    Updated: 2024/06/18 19:20:00 by akeldiya         ###   ########.fr        #
+#    Updated: 2024/06/18 21:45:09 by akeldiya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME	= so_long
 
 CC = gcc
 
-CFLAGS = -g #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 

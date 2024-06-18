@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:24:07 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 21:32:23 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:55:29 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ t_map				*get_last_node(t_map *head);
 
 int					mapwidth(t_map *map);
 int					mapheight(t_map *map);
+int					on_keypress(int keysym, t_data *data);
+int					free_data(t_data *data);
 
 char				*map_name_check(char *name);
 
 void				map_checker(t_map *head);
-void				free_data(t_data *data);
 void				free_nodes(t_map **nodes);
 void				error_texture(t_data *data);
 void				error_param(void);
@@ -72,6 +73,5 @@ void				points2p(t_map *head, t_map *temp, int i, bool isitrun);
 void				finish(t_data *data);
 
 void				ft_draw(t_data *data);
-void				on_keypress(int keysym, t_data *data);
 
 #endif

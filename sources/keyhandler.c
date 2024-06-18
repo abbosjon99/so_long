@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:13:26 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 21:33:31 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:53:17 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static short int	to_bottom(t_data *data)
 	return (0);
 }
 
-void	on_keypress(int keysym, t_data *data)
+int	on_keypress(int keysym, t_data *data)
 {
 	static int	counter;
 	int			i;
@@ -138,8 +138,8 @@ void	on_keypress(int keysym, t_data *data)
 		i += to_bottom(data);
 	if (i != counter)
 	{
-		ft_printf("%d collectable.\n", data->c);
 		counter = i;
 		ft_printf("%d moves.\n", counter);
 	}
+	return (0);
 }

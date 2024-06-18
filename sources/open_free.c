@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:00:30 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 21:34:25 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:57:22 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	img_clean(t_data *data)
 	}
 }
 
-void	free_data(t_data *data)
+int	free_data(t_data *data)
 {
 	img_clean(data);
 	if (data->mlx_ptr != NULL)
@@ -76,6 +76,7 @@ char	*map_name_check(char *name)
 		ft_printf("Map should be a file with *.ber extension!\n");
 		exit(1);
 	}
+	return (NULL);
 }
 
 void	finish(t_data *data)
