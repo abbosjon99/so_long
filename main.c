@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:32:47 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 19:18:39 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 20:11:15 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ int	main(int argc, char **argv)
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (free_nodes(data.map), 1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.x * 64, data.y * 64,
-			"so_long");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.x * IMG_SIZE, data.y
+			* IMG_SIZE, "so_long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), free_nodes(data.map), 1);
 	img_loader(&data);
+	ft_draw(&data);
 	mlx_hook(data.win_ptr, 02, 1L << 0, &on_keypress, &data);
 	mlx_hook(data.win_ptr, 17, 1L << 0, &free_data, &data);
 	mlx_loop(data.mlx_ptr);

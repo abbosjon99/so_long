@@ -6,12 +6,14 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:24:07 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 19:23:07 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 20:04:54 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# define IMG_SIZE 64
 
 # include "libft/libft.h"
 # include "mlx-linux/mlx.h"
@@ -36,6 +38,9 @@ typedef struct s_data
 {
 	int				x;
 	int				y;
+	int				posx;
+	int				posy;
+	void			*ptry;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*textures[5];
@@ -64,5 +69,7 @@ void				map_notreachable(t_map **nodes);
 void				map_error_wrong_char(t_map **map);
 void				map_error_collectives(t_map **map);
 void				points2p(t_map *head, t_map *temp, int i, bool isitrun);
+
+void				ft_draw(t_data *data);
 
 #endif
