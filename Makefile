@@ -6,14 +6,14 @@
 #    By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/28 19:56:58 by akeldiya          #+#    #+#              #
-#    Updated: 2024/06/14 21:15:53 by akeldiya         ###   ########.fr        #
+#    Updated: 2024/06/18 19:20:00 by akeldiya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Files
 SRCS	= main.c	sources/mapchecker.c	sources/errors.c \
 		sources/mapchecker_utils.c	sources/errors2.c	sources/open_free.c \
-		sources/maplen.c
+		sources/maplen.c sources/keyhandler.c sources/draw.c
 
 # Sources and objects
 OBJS	:= $(SRCS:%.c=%.o)

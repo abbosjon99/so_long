@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:24:07 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/14 21:13:33 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:23:07 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ t_map				*get_last_node(t_map *head);
 
 int					mapwidth(t_map *map);
 int					mapheight(t_map *map);
+int					on_keypress(int keysym, t_data *data);
 
 char				*map_name_check(char *name);
 
 void				map_checker(t_map *head);
 void				free_data(t_data *data);
 void				free_nodes(t_map **nodes);
+void				error_texture(t_data *data);
 void				error_param(void);
 void				error_main(t_map **nodes, bool needtoexit);
 void				map_error_open(void);

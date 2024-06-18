@@ -6,14 +6,28 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:00:30 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/14 21:27:00 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:01:34 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+static void	img_clean(t_data *data)
+{
+	short int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		if (data->textures[i] != NULL)
+			mlx_destroy_image(data->mlx_ptr, data->textures[i]);
+		i++;
+	}
+}
+
 void	free_data(t_data *data)
 {
+	img_clean(data);
 	if (data->mlx_ptr != NULL)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
