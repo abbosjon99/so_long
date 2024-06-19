@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:28:59 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 21:22:53 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:27:40 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,24 @@ static int	put_img(int x, int y, char sym, t_data *data)
 		data->c++;
 	}
 	else if (sym == 'E')
-		i = 4;
+	{
+		i = 0;
+		data->extx = x;
+		data->exty = y;
+	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[i], x
 		* IMG_SIZE, y * IMG_SIZE);
 	if (sym == 'P')
 		return (1);
+	if (sym == 'E')
+		return (2);
 	return (0);
 }
 
 void	ft_draw(t_data *data)
 {
 	t_map	*mapy;
+	int	tmp;
 	int		x;
 	int		y;
 
@@ -49,11 +56,17 @@ void	ft_draw(t_data *data)
 		x = 0;
 		while (x < data->x)
 		{
-			if (put_img(x, y, mapy->mtxt[x], data))
+			tmp = put_img(x, y, mapy->mtxt[x], data);
+			if (tmp == 1)
 			{
 				data->posx = x;
 				data->posy = y;
 				data->ptry = mapy;
+			}
+			else if (tmp == 2)
+			{
+				data->exptry = mapy;
+				mapy->mtxt[x] = '0';
 			}
 			x++;
 		}

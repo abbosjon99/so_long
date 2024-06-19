@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:24:07 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 21:55:29 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:21:07 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct s_data
 	int				posx;
 	int				posy;
 	void			*ptry;
+	int				extx;
+	int				exty;
+	void			*exptry;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*textures[5];

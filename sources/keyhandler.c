@@ -6,7 +6,7 @@
 /*   By: akeldiya <akeldiya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:13:26 by akeldiya          #+#    #+#             */
-/*   Updated: 2024/06/18 21:53:17 by akeldiya         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:32:48 by akeldiya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,16 @@ int	on_keypress(int keysym, t_data *data)
 {
 	static int	counter;
 	int			i;
+	t_map *temp;
 
+	temp = data->exptry;
 	i = counter;
+	if (data->c == 0)
+	{
+		temp->mtxt[data->extx] = 'E';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[4],
+			data->extx * IMG_SIZE, data->exty * IMG_SIZE);
+	}
 	if (keysym == 65307)
 		free_data(data);
 	else if (keysym == 100 || keysym == 65363)
